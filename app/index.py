@@ -29,6 +29,10 @@ class LatencyRequest(BaseModel):
     regions: List[str]
     threshold_ms: int
 
+@app.options("/{rest_of_path:path}")
+async def preflight_handler():
+    return {}
+
 @app.post("/latency")
 async def check_latency(payload: LatencyRequest):
     results: Dict[str, Any] = {}
