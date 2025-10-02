@@ -8,17 +8,19 @@ import os
 
 app = FastAPI()
 
-origins = [
-    "*",  # Allow all origins; for production, specify your domain(s) here
-]
+# origins = [
+#     "*",  # Allow all origins; for production, specify your domain(s) here
+# ]
 
 
 # Enable CORS for POST from any origin
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"]
 )
 
 # Load telemetry data once at startup
