@@ -51,9 +51,9 @@ async def check_latency(payload: LatencyRequest):
         uptimes = [rec["uptime_pct"] for rec in region_data]
 
         # Metrics
-        avg_latency = float(np.mean(latencies))
-        p95_latency = float(np.percentile(latencies, 95))
-        avg_uptime = float(np.mean(uptimes))
+        avg_latency = float(np.mean(latencies),2)
+        p95_latency = float(np.percentile(latencies, 95),2)
+        avg_uptime = float(np.mean(uptimes),3)
         breaches = sum(1 for l in latencies if l > payload.threshold_ms)
 
         results[region] = {
