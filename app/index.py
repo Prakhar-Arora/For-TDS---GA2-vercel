@@ -63,4 +63,4 @@ async def check_latency(payload: LatencyRequest):
             "breaches": breaches,
         }
 
-    return results
+    return {"regions":results}
